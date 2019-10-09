@@ -2,8 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Bookmark Manager</title>
   </head>
+  <header>Bookmark Manager</header>
   <body>
     <ul>
       <% @bookmarks.each do |bookmark| %>
@@ -11,6 +12,10 @@
         <a href="<%= bookmark.url %>" >
           <%= bookmark.title %>
         </a>
+        <form action =<%= "/bookmarks/delete/#{bookmark.id}"  %> method='post'>
+          <input type='hidden' name='_method' value='DELETE'/>
+          <input type='submit' value='Delete'/>
+        </form>
       <% end %>
     </li>
     </ul>
