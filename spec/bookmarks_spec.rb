@@ -9,7 +9,7 @@ describe Bookmarks do
     it 'should return a list of bookmarks' do
       connection = PG.connect(dbname: 'bookmark_manager_test')
 
-      Bookmarks.create(url: 'www.bbc.co.uk/sport', title: 'BBC Sport')
+     bookmark = Bookmarks.create(url: 'www.bbc.co.uk/sport', title: 'BBC Sport')
       Bookmarks.create(url: 'www.miniclip.com', title: 'Miniclip')
       Bookmarks.create(url: 'www.cartoonnetwork.co.uk', title: 'CN')
 
@@ -17,7 +17,7 @@ describe Bookmarks do
 
       expect(bookmarks.length).to eq 3
       expect(bookmarks.first).to be_a Bookmarks
-      # expect(bookmarks.first.id).to eq bookmarks.id
+      expect(bookmarks.first.id).to eq bookmark.id
       expect(bookmarks.first.title).to eq 'BBC Sport'
       expect(bookmarks.first.url).to eq 'www.bbc.co.uk/sport'
     end
