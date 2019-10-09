@@ -63,4 +63,16 @@ describe Bookmarks do
       end
     end
   end
+  describe '#update' do
+    context 'given an id, title and url' do
+      it 'updates the given bookmark' do
+        bookmark = Bookmarks.create(url: 'www.tst1.com', title: 'Tst1')
+        
+        Bookmarks.update(id: bookmark.id, url: 'www.test1.com', title: 'Test1')
+        bookmark = Bookmarks.get_bookmark(bookmark.id)
+        expect(bookmark.title).to eq 'Test1'
+        expect(bookmark.url).to eq 'www.test1.com'
+      end
+    end
+  end
 end

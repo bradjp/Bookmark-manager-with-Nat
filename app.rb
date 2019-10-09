@@ -11,6 +11,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/bookmarks' do
     @bookmarks = Bookmarks.all
+    puts @bookmarks.first.url
     erb(:bookmarks)
   end
 
@@ -36,6 +37,9 @@ class BookmarkManager < Sinatra::Base
   end
 
   patch '/bookmarks/:id' do
+    id, title, url = params[:id], params[:title], params[:url]
+    Bookmarks.update(id: id, title: title, url: url)
+
     redirect '/bookmarks'
   end
 
