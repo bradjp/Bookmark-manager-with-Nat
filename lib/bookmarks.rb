@@ -22,8 +22,8 @@ class Bookmarks
     Bookmarks.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
-  def self.delete(bookmark)
-    self.connection.exec("DELETE FROM bookmarks WHERE id = #{bookmark.id}")
+  def self.delete(id)
+    self.connection.exec("DELETE FROM bookmarks WHERE id = #{id}")
   end
   
   def self.get_bookmark(id)

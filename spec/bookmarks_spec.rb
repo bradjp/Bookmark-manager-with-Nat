@@ -39,14 +39,14 @@ describe Bookmarks do
     it 'deletes a bookmark' do
       bookmark = Bookmarks.create(url: 'www.test.com', title: 'Test')
       expect(Bookmarks.all).not_to be_empty
-      Bookmarks.delete(bookmark)
+      Bookmarks.delete(bookmark.id)
       expect(Bookmarks.all).to be_empty
    end
     it 'deletes only the selected bookmark' do
       bookmark = Bookmarks.create(url: 'www.test1.com', title: 'Test1')
       bookmark2 = Bookmarks.create(url: 'www.test.com', title: 'Test')
 
-      Bookmarks.delete(bookmark)
+      Bookmarks.delete(bookmark.id)
       expect(Bookmarks.all.length).to eq(1)
       expect(Bookmarks.all.first.title).to eq(bookmark2.title)
    end
